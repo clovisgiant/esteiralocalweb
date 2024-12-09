@@ -1,16 +1,4 @@
-name: Deploy via ftp
-on: push
-jobs:
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-
-    - name: FTP Deploy Locaweb
-      uses: locaweb/ftp-deploy@1.0.0
-      with:
-       name: Deploy to FTP
+name: Deploy to FTP
 
 on:
   push:
@@ -33,6 +21,3 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}  # Mantém 'password'
         localDir: ./build  # Substitui 'local-dir' por 'localDir'
         remoteDir: /public_html  # Substitui 'remote-dir' por 'remoteDir'
-
-        local-dir: ./build  # Diretório local a ser enviado (pode ser o diretório de produção ou build)
-        remote-dir: /public_html  # Diretório remoto no servidor FTP onde os arquivos serão enviados
