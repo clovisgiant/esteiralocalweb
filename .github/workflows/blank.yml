@@ -10,8 +10,8 @@ jobs:
     - name: FTP Deploy Locaweb
       uses: locaweb/ftp-deploy@1.0.0
       with:
-        host: ${{ftp.webwonka.servicos.ws}} 
-        user: ${{webwonkaservicos1}}
-        password: ${{EduardoSilva@2327}}
+        host: ${{ ftp.webwonka.servicos.ws }} 
+        user: ${{ webwonkaservicos1 }}
+        password: ${{ EduardoSilva@2327 }}
         local-dir: ./build  # Diretório local a ser enviado (pode ser o diretório de produção ou build)
         remote-dir: /public_html  # Diretório remoto no servidor FTP onde os arquivos serão enviados
