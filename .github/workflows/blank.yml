@@ -19,5 +19,5 @@ jobs:
         host: ${{ secrets.FTP_SERVER }}  # Substitui 'server' por 'host'
         user: ${{ secrets.FTP_USERNAME }}  # Substitui 'username' por 'user'
         password: ${{ secrets.FTP_PASSWORD }}  # Mantém 'password'
-        localDir: ./  # Substitui 'local-dir' por 'localDir'
+        localDir: ./prod  # Substitui 'local-dir' por 'localDir'
         remoteDir: /public_html  # Substitui 'remote-dir' por 'remoteDir'
