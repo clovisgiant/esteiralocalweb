@@ -1,17 +1,23 @@
-name: Deploy via ftp
-on: push
+name: Deploy to FTP
+
+on:
+  push:
+    branches:
+      - main  # O workflow será disparado quando houver um push no branch main
+
 jobs:
   deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
+    runs-on: ubuntu-latest  # O GitHub usará uma máquina Ubuntu para executar o job
 
-    - name: FTP Deploy Locaweb
-      uses: locaweb/ftp-deploy@1.0.0
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3  # Faz o checkout do código no repositório
+
+    - name: Deploy to FTP server
+      uses: sebastianpopp/ftp-deploy-action@v1.0.0  # Ação para enviar arquivos via FTP
       with:
-        server: ${{ secrets.FTP_SERVER }}  # Use o segredo do servidor FTP
-        username: ${{ secrets.FTP_USERNAME }}  # Use o segredo do nome de usuário FTP
-        password: ${{ secrets.FTP_PASSWORD }}  # Use o segredo da senha FTP
-        local-dir: ./build  # Diretório local a ser enviado (pode ser o diretório de produção ou build)
-        remote-dir: /public_html  # Diretório remoto no servidor FTP onde os arquivos serão enviados
+        host: ${{ secrets.FTP_SERVER }}  # Substitui 'server' por 'host'
+        user: ${{ secrets.FTP_USERNAME }}  # Substitui 'username' por 'user'
+        password: ${{ secrets.FTP_PASSWORD }}  # Mantém 'password'
+        localDir: ./build  # Substitui 'local-dir' por 'localDir'
+        remoteDir: /public_html  # Substitui 'remote-dir' por 'remoteDir'
